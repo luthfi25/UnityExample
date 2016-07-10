@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 0e274f60aeaad1140af776c6ae0bb3cd
+timeCreated: 1431437758
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: goat_0
+    21300002: goat_1
+    21300004: goat_2
+    21300006: goat_5
+    21300008: goat_6
+    21300010: goat_7
+    21300012: goat_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: goat_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 711
+        width: 1284
+        height: 991
+      alignment: 9
+      pivot: {x: .182247013, y: .408201903}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: goat_1
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 794
+        width: 1073
+        height: 884
+      alignment: 9
+      pivot: {x: .551383317, y: .384616762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: goat_2
+      rect:
+        serializedVersion: 2
+        x: 2798
+        y: 1287
+        width: 376
+        height: 360
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: goat_5
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 10
+        width: 169
+        height: 264
+      alignment: 9
+      pivot: {x: .516311824, y: .792379141}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: goat_6
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 1
+        width: 158
+        height: 265
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: goat_7
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 15
+        width: 174
+        height: 242
+      alignment: 9
+      pivot: {x: .563372731, y: .773393929}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: goat_8
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 0
+        width: 160
+        height: 263
+      alignment: 9
+      pivot: {x: .448310852, y: .824936748}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: 460b4a7404f32f64aac023c027cdc5d8
+timeCreated: 1431619551
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Squirrel_atlas_0
+    21300002: Squirrel_atlas_1
+    21300004: Squirrel_atlas_2
+    21300006: Squirrel_atlas_3
+    21300008: Squirrel_atlas_4
+    21300010: Squirrel_atlas_5
+    21300012: Squirrel_atlas_6
+    21300014: Squirrel_atlas_7
+    21300016: Squirrel_atlas_8
+    21300018: Squirrel_atlas_9
+    21300020: Squirrel_atlas_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Squirrel_atlas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1215
+        width: 1007
+        height: 1355
+      alignment: 9
+      pivot: {x: .826560855, y: .115994722}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_1
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 1329
+        width: 1251
+        height: 1140
+      alignment: 9
+      pivot: {x: .506654739, y: .0654812977}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_2
+      rect:
+        serializedVersion: 2
+        x: 2834
+        y: 2126
+        width: 241
+        height: 330
+      alignment: 9
+      pivot: {x: .551816583, y: .209878072}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_3
+      rect:
+        serializedVersion: 2
+        x: 2917
+        y: 1696
+        width: 181
+        height: 250
+      alignment: 9
+      pivot: {x: .477000862, y: .266893566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_4
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 619
+        width: 292
+        height: 464
+      alignment: 9
+      pivot: {x: .742344379, y: .840904236}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_5
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 600
+        width: 320
+        height: 470
+      alignment: 9
+      pivot: {x: .252844632, y: .889691949}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_6
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 737
+        width: 250
+        height: 313
+      alignment: 9
+      pivot: {x: .516650379, y: .805879176}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_7
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 681
+        width: 234
+        height: 330
+      alignment: 9
+      pivot: {x: .464422256, y: .815349996}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_8
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 355
+        width: 768
+        height: 667
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_9
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 161
+        width: 641
+        height: 350
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Squirrel_atlas_10
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 0
+        width: 480
+        height: 149
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
