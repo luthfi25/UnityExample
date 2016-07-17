@@ -18,13 +18,20 @@ public class enemyScript : MonoBehaviour {
 	bool isDiem = false;
 	float lastDiem;
 
+	Animator anim;
+	AudioSource au;
+
 	// Use this for initialization
 	void Start () {
 		lastFired = Time.time;
+		anim = GetComponent<Animator> ();
+		au = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		/*cek hp 0 lalu set animasi mati*/
+
 		if (!isWalking) {
 			int arah = (int) Random.Range (1, 2.9f);
 			float offset = Random.Range (0.0f, 5.0f);
@@ -45,12 +52,14 @@ public class enemyScript : MonoBehaviour {
 			face (arah);
 			isWalking = true;
 		} else if(isDiem){
+			//set animasi nyerang
 			if (Time.time - lastDiem > 0.25f) {
 				isDiem = false;
 				SpawnBullet ();
 			}
 		}
 		else {
+			//set animasi jalan
 			if (facingRight) {
 				if (transform.position.x < dest.x)
 					transform.Translate (Vector3.right * Time.deltaTime * 2);
@@ -113,5 +122,14 @@ public class enemyScript : MonoBehaviour {
 		//Apply the steering. The less the mass, the more effective the steering
 		rb.AddForce(desiredVelocity);
 		Destroy (obj.gameObject);
+
+		//matiin animasi nyerang
+	}
+
+	void OnTriggerEnter2D (Collider2D coll) {
+		/*if gameobject == player bullet
+			hp kurang
+			bunyiin suara hit
+		*/
 	}
 }
