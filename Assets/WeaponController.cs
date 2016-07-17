@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour {
-	public float maxPower = 3.0f;
-	public float fireRate = 0.5f;
+public class WeaponController : MonoBehaviour {
 	public GameObject bullet;
+	public float maxPower = 3.0f;
+	public bool released = false;
 
 	private SpringJoint2D spring;
 	private Transform pivot;
@@ -12,24 +12,24 @@ public class PlayerController : MonoBehaviour {
 	private float maxPowerSqr;
 	private bool touchedOn;
 	private Vector2 prevVelocity;
-	private bool noTouch = false;
+	private GameObject projectile;
 	// Use this for initialization
 
 	void Awake () {
+		projectile = Instantiate (bullet, new Vector3 (-5, -3, 0), Quaternion.identity) as GameObject;
 		spring = GetComponent <SpringJoint2D> ();
-		spring.connectedBody = GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D> ();
-		pivot = spring.connectedBody.transform;
+		spring.connectedBody = projectile.GetComponent <Rigidbody2D> ();
+		pivot = gameObject.transform;
 		GetComponent<Rigidbody2D> ().isKinematic = true;
-
 	}
 	void Start () {
 		rayToTouch = new Ray (pivot.position, Vector3.zero);
 		maxPowerSqr = maxPower * maxPower;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (Input.touchCount > 0 && !noTouch) {
+		if (Input.touchCount > 0) {
 			Touch touchZero = Input.GetTouch (0);
 			if (touchZero.phase == TouchPhase.Began) {
 				spring.enabled = false;
@@ -45,10 +45,8 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (spring != null) {
 			if (!GetComponent<Rigidbody2D> ().isKinematic && prevVelocity.sqrMagnitude > GetComponent<Rigidbody2D> ().velocity.sqrMagnitude) {
-				Destroy (spring);
+				spring.connectedBody = null;
 				GetComponent<Rigidbody2D> ().velocity = prevVelocity;
-				noTouch = true;
-				GameObject proj = Instantiate (bullet, new Vector3 (-6, -2, 0), Quaternion.identity) as GameObject;
 			}
 			if (!touchedOn) {
 				prevVelocity = GetComponent<Rigidbody2D> ().velocity;
@@ -67,7 +65,12 @@ public class PlayerController : MonoBehaviour {
 
 		touchWorldPoint.z = 0f;
 		transform.position = touchWorldPoint;
-			
-	}
 
+	}
+	IEnumerator WaitNextBullet(){
+		yield return new WaitForSeconds (3);
+		bullet = Instantiate (bullet, new Vector3 (-5, -3, 0), Quaternion.identity) as GameObject;
+		bullet.GetComponent<Rigidbody2D> ().isKinematic = true;
+
+	}
 }
