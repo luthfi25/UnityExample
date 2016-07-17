@@ -485,14 +485,6 @@ Prefab:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1449801667}
-    - target: {fileID: 21293420, guid: cb1f04ca9cc6eb54f91bfc799be6d951, type: 2}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb1f04ca9cc6eb54f91bfc799be6d951, type: 2}
   m_IsPrefabParent: 0
