@@ -4,14 +4,17 @@ using System.Collections;
 public class enemyScript : MonoBehaviour {
 	public Transform leftBound;
 	public Transform rightBound;
-	public Transform player;
+	//public Transform player;
 
 	Vector3 dest;
+	float dist;
 	bool facingRight = true;
 	bool isWalking = false;
 	float lastFired;
 
 	public GameObject bullet;
+	public float bulletForce;
+	public float bulletAngle;
 	GameObject plr;
 	Rigidbody2D rb;
 
@@ -20,6 +23,8 @@ public class enemyScript : MonoBehaviour {
 
 	Animator anim;
 	AudioSource au;
+
+	public float health = 100.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -34,15 +39,15 @@ public class enemyScript : MonoBehaviour {
 
 		if (!isWalking) {
 			int arah = (int) Random.Range (1, 2.9f);
-			float offset = Random.Range (0.0f, 5.0f);
+			float offset = Random.Range (0.0f, 2.5f);
 
 			if (arah == 1) {
-				dest = player.position + new Vector3(offset,0);
+				dest = transform.position + new Vector3(offset,0);
 
 				if (dest.x > rightBound.position.x)
 					dest.x = rightBound.position.x;
 			} else {
-				dest = player.position - new Vector3(offset,0);
+				dest = transform.position - new Vector3(offset,0);
 
 				if(dest.x < leftBound.position.x)
 					dest.x = leftBound.position.x;
@@ -60,17 +65,10 @@ public class enemyScript : MonoBehaviour {
 		}
 		else {
 			//set animasi jalan
-			if (facingRight) {
-				if (transform.position.x < dest.x)
-					transform.Translate (Vector3.right * Time.deltaTime * 2);
-				else
-					isWalking = false;
-			} else {
-				if (transform.position.x > dest.x)
-					transform.Translate (Vector3.left * Time.deltaTime * 2);
-				else
-					isWalking = false;
-			}	
+			if (transform.position.x != dest.x)
+				transform.position = Vector3.MoveTowards (transform.position, dest, Time.deltaTime);
+			else
+				isWalking = false;
 		}
 			
 	}
@@ -101,28 +99,13 @@ public class enemyScript : MonoBehaviour {
 	}
 
 	void SpawnBullet(){
-		Transform obj = new GameObject().transform;
-		obj.position = new Vector3 (Random.Range(leftBound.position.x, rightBound.position.x),player.position.y);
-
 		plr = (GameObject) Instantiate(bullet,transform.position, Quaternion.identity);
-		rb = plr.GetComponent<Rigidbody2D>();	
+		rb = plr.GetComponent<Rigidbody2D>();
 
-		Vector3 dir = obj.position - transform.position;
-		dir = obj.InverseTransformDirection(dir);
-		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		Vector3 dir = Quaternion.AngleAxis (bulletAngle, Vector3.forward) * Vector3.right;
+		rb.AddForce (dir * bulletForce);
 
-		plr.transform.rotation = Quaternion.Euler(0,0,angle+180);
-
-		//First we get the direction we need to travel in
-		Vector2 direction = (obj.position - transform.position).normalized;
-
-		//Multiply it by the maximum speed we're trying to reach
-		Vector2 desiredVelocity = direction * 100;
-
-		//Apply the steering. The less the mass, the more effective the steering
-		rb.AddForce(desiredVelocity);
-		Destroy (obj.gameObject);
-
+		plr.transform.rotation = Quaternion.Euler (0, 0, 180+bulletAngle);
 		//matiin animasi nyerang
 	}
 
