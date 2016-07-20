@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
 	public float maxPower = 3.0f;
 	public float fireRate = 0.5f;
 	public GameObject bullet;
+	public Main main;
 
 	private SpringJoint2D spring;
 	private Transform pivot;
