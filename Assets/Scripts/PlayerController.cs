@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 	private bool touchedOn;
 	private Vector2 prevVelocity;
 	private bool noTouch = false;
+	private bool attack;
 	// Use this for initialization
 
 	void Awake () {
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 		spring.connectedBody = GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D> ();
 		pivot = spring.connectedBody.transform;
 		GetComponent<Rigidbody2D> ().isKinematic = true;
-
+		main = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Main> ();
 	}
 	void Start () {
 		rayToTouch = new Ray (pivot.position, Vector3.zero);
@@ -36,23 +37,30 @@ public class PlayerController : MonoBehaviour {
 				spring.enabled = false;
 				touchedOn = true;
 			} else if (touchZero.phase == TouchPhase.Ended) {
-				spring.enabled = true;
-				GetComponent<Rigidbody2D> ().isKinematic = false;
 				touchedOn = false;
 			}
 			if (touchedOn) {
 				Dragging (touchZero);
 			} 
 		}
+		if (main.GetMatch ()) {
+			attack = true;
+		}
+		if (attack && prevVelocity.sqrMagnitude > GetComponent<Rigidbody2D>().velocity.sqrMagnitude) {
+			spring.enabled = true;
+			GetComponent<Rigidbody2D> ().isKinematic = false;
+		}
 		if (spring != null) {
-			if (!GetComponent<Rigidbody2D> ().isKinematic && prevVelocity.sqrMagnitude > GetComponent<Rigidbody2D> ().velocity.sqrMagnitude) {
+			if (!GetComponent<Rigidbody2D> ().isKinematic && prevVelocity.sqrMagnitude > GetComponent<Rigidbody2D>().velocity.sqrMagnitude) {
 				Destroy (spring);
+				Destroy (gameObject, 2f);
 				GetComponent<Rigidbody2D> ().velocity = prevVelocity;
 				noTouch = true;
 				GameObject proj = Instantiate (bullet, new Vector3 (-6, -2, 0), Quaternion.identity) as GameObject;
 			}
-			if (!touchedOn) {
+			if (attack) {
 				prevVelocity = GetComponent<Rigidbody2D> ().velocity;
+				attack = false;
 			}
 		}
 	}
