@@ -510,6 +510,14 @@ Prefab:
       propertyPath: rightBound
       value: 
       objectReference: {fileID: 1379008593}
+    - target: {fileID: 11431726, guid: e4ee2bce704c3d445800d9701a3a4321, type: 2}
+      propertyPath: bulletAngle
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 11431726, guid: e4ee2bce704c3d445800d9701a3a4321, type: 2}
+      propertyPath: bulletForce
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4ee2bce704c3d445800d9701a3a4321, type: 2}
   m_IsPrefabParent: 0

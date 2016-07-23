@@ -36,6 +36,8 @@ public class enemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		/*cek hp 0 lalu set animasi mati*/
+		if (health <= 0)
+			Application.Quit ();
 
 		if (!isWalking) {
 			int arah = (int) Random.Range (1, 2.9f);
@@ -52,7 +54,6 @@ public class enemyScript : MonoBehaviour {
 				if(dest.x < leftBound.position.x)
 					dest.x = leftBound.position.x;
 			}
-			Debug.Log (dest);
 
 			face (arah);
 			isWalking = true;
@@ -102,17 +103,19 @@ public class enemyScript : MonoBehaviour {
 		plr = (GameObject) Instantiate(bullet,transform.position, Quaternion.identity);
 		rb = plr.GetComponent<Rigidbody2D>();
 
+		bulletAngle = Random.Range (100.0f, 170.0f);
 		Vector3 dir = Quaternion.AngleAxis (bulletAngle, Vector3.forward) * Vector3.right;
 		rb.AddForce (dir * bulletForce);
+		rb.AddTorque(bulletForce/bulletAngle * 2.0f);
 
 		plr.transform.rotation = Quaternion.Euler (0, 0, 180+bulletAngle);
 		//matiin animasi nyerang
 	}
 
-	void OnTriggerEnter2D (Collider2D coll) {
-		/*if gameobject == player bullet
-			hp kurang
-			bunyiin suara hit
-		*/
+	void OnTriggerEnter2D(Collider2D coll) {
+		if (coll.gameObject.tag == "Player Bullet") {
+			health -= 5;
+			Destroy (coll.gameObject);
+		}
 	}
 }
