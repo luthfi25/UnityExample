@@ -50,10 +50,10 @@ public class Main : MonoBehaviour {
 	public SpriteRenderer gesture3;
 
 	private bool match = false;
-
+	private int boundaryX = 100;
 	void Start () {
 		platform = Application.platform;
-		drawArea = new Rect(70, 0, Screen.width-70, Screen.height);
+		drawArea = new Rect(boundaryX, 0, Screen.width-boundaryX, Screen.height);
 
 		TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("GestureSet");
 		foreach (TextAsset gestureXml in gesturesXml)
@@ -79,7 +79,7 @@ public class Main : MonoBehaviour {
 		}
 		if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer) {
 			if (Input.touchCount > 0) {
-				virtualKeyPosition = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
+				virtualKeyPosition = new Vector3(Input.GetTouch(1).position.x, Input.GetTouch(1).position.y);
 			}
 		} else {
 			if (Input.GetMouseButton(0)) {
