@@ -9,6 +9,7 @@ TagManager:
   - Sheep
   - Enemy
   - Bat
+  - Player Bullet
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - Background
   - Player Bullet
-  - 
+  - Enemy Bullet
   - 
   - 
   - 
