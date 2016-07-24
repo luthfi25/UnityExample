@@ -90,7 +90,7 @@ public class enemyScript : MonoBehaviour {
 		bulletAngle = Random.Range (120.0f, 160.0f);
 		Vector3 dir = Quaternion.AngleAxis (bulletAngle, Vector3.forward) * Vector3.right;
 		rb.AddForce (dir * bulletForce);
-		rb.AddTorque(bulletForce/bulletAngle * 3.0f);
+		rb.AddTorque(bulletForce/bulletAngle * 50.0f);
 
 		plr.transform.rotation = Quaternion.Euler (0, 0, 180+bulletAngle);
 		//matiin animasi nyerang

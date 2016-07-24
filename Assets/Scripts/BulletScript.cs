@@ -18,10 +18,10 @@ public class BulletScript : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter2D (Collider2D coll) {
-		/*if gameobject == player
-			nyalain animasi hit
-			destroy gameobject
-		*/
+	void OnCollisionEnter2D (Collision2D coll) {
+		if (coll.gameObject.tag == "Player Bullet") {
+			Destroy (coll.gameObject);
+			Destroy (gameObject);
+		}
 	}
 }
