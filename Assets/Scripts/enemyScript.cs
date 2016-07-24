@@ -55,7 +55,6 @@ public class enemyScript : MonoBehaviour {
 					dest.x = leftBound.position.x;
 			}
 
-			face (arah);
 			isWalking = true;
 		} else if(isDiem){
 			//set animasi nyerang
@@ -82,22 +81,7 @@ public class enemyScript : MonoBehaviour {
 		}
 	}
 
-	void flip(){
-		facingRight = !facingRight;
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
 
-	void face(int arah){
-		if (arah == 1) {
-			if (!facingRight)
-				flip ();
-		} else {
-			if (facingRight)
-				flip ();
-		}
-	}
 
 	void SpawnBullet(){
 		plr = (GameObject) Instantiate(bullet,transform.position, Quaternion.identity);
