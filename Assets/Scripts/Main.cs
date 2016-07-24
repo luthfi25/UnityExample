@@ -12,7 +12,7 @@ public class Main : MonoBehaviour {
 	private List<Sprite> randomGesture;
 
 	private bool gestureErr = false;
-	private Vector3 mouseStart;
+	private Vector2 mouseStart;
 	//GUI for Game
 
 
@@ -51,6 +51,7 @@ public class Main : MonoBehaviour {
 
 	private bool match = false;
 	private int boundaryX = 100;
+	private Touch touchOne;
 	void Start () {
 		platform = Application.platform;
 		drawArea = new Rect(boundaryX, 0, Screen.width-boundaryX, Screen.height);
@@ -69,57 +70,58 @@ public class Main : MonoBehaviour {
 
 	void Update () {
 		GamePlay ();
-		if (Input.mousePosition.x > 70 & Input.GetMouseButtonUp(0)) {
-			points.Clear();
-			foreach (LineRenderer lineRenderer in gestureLinesRenderer) {
-				lineRenderer.SetVertexCount(0);
-				Destroy(lineRenderer.gameObject);
-			}
-			gestureLinesRenderer.Clear();
-		}
+
 		if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer) {
+			
 			if (Input.touchCount > 0) {
-				virtualKeyPosition = new Vector3(Input.GetTouch(1).position.x, Input.GetTouch(1).position.y);
-			}
-		} else {
-			if (Input.GetMouseButton(0)) {
-				virtualKeyPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-			}
-		}
-		if (Input.mousePosition.x > 70 & drawArea.Contains(virtualKeyPosition)) {
-			if (Input.GetMouseButtonDown(0)) {
-
-				if (recognized) {
-
-					recognized = false;
-					strokeId = -1;
-
+				touchOne = Input.GetTouch (1);
+				if (touchOne.position.x > 70 & touchOne.phase == TouchPhase.Ended) {
 					points.Clear();
 					foreach (LineRenderer lineRenderer in gestureLinesRenderer) {
-
 						lineRenderer.SetVertexCount(0);
 						Destroy(lineRenderer.gameObject);
 					}
-
 					gestureLinesRenderer.Clear();
 				}
-				++strokeId;
+				virtualKeyPosition = new Vector3(touchOne.position.x, touchOne.position.y);
+				if (touchOne.position.x > 70 & drawArea.Contains(virtualKeyPosition)) {
+					if (touchOne.phase == TouchPhase.Began) {
 
-				Transform tmpGesture = Instantiate(gestureOnScreenPrefab, transform.position, transform.rotation) as Transform;
-				currentGestureLineRenderer = tmpGesture.GetComponent<LineRenderer>();
+						if (recognized) {
 
-				gestureLinesRenderer.Add(currentGestureLineRenderer);
+							recognized = false;
+							strokeId = -1;
 
-				vertexCount = 0;
+							points.Clear();
+							foreach (LineRenderer lineRenderer in gestureLinesRenderer) {
+
+								lineRenderer.SetVertexCount(0);
+								Destroy(lineRenderer.gameObject);
+							}
+
+							gestureLinesRenderer.Clear();
+						}
+						++strokeId;
+
+						Transform tmpGesture = Instantiate(gestureOnScreenPrefab, transform.position, transform.rotation) as Transform;
+						currentGestureLineRenderer = tmpGesture.GetComponent<LineRenderer>();
+
+						gestureLinesRenderer.Add(currentGestureLineRenderer);
+
+						vertexCount = 0;
+					}
+
+					if (Input.mousePosition.x > 70 & touchOne.pressure >= 1) {
+						points.Add(new Point(virtualKeyPosition.x, -virtualKeyPosition.y, strokeId));
+
+						currentGestureLineRenderer.SetVertexCount(++vertexCount);
+						currentGestureLineRenderer.SetPosition(vertexCount - 1, Camera.main.ScreenToWorldPoint(new Vector3(virtualKeyPosition.x, virtualKeyPosition.y, 10)));
+					}
+				}
 			}
+		} 
 
-			if (Input.mousePosition.x > 70 & Input.GetMouseButton(0)) {
-				points.Add(new Point(virtualKeyPosition.x, -virtualKeyPosition.y, strokeId));
 
-				currentGestureLineRenderer.SetVertexCount(++vertexCount);
-				currentGestureLineRenderer.SetPosition(vertexCount - 1, Camera.main.ScreenToWorldPoint(new Vector3(virtualKeyPosition.x, virtualKeyPosition.y, 10)));
-			}
-		}
 	}
 	void GamePlay(){
 		match = false;
@@ -153,12 +155,12 @@ public class Main : MonoBehaviour {
 
 		//GUI.Box(drawArea,"Draw Area");
 		GUI.Label(new Rect(10, Screen.height - 40, 500, 50), "<color=red>"+message+"</color>");
-		if(Input.mousePosition.x > 70 & Input.GetMouseButtonDown(0)){
-			mouseStart= Input.mousePosition;
+		if(touchOne.position.x > 70 & touchOne.phase == TouchPhase.Began){
+			mouseStart = touchOne.position;
 		}
-		if (Input.mousePosition.x > 70 & Input.GetMouseButtonUp(0)) {
+		if (touchOne.position.x > 70 & touchOne.phase == TouchPhase.Ended) {
 
-			if(mouseStart == Input.mousePosition){
+			if(mouseStart == touchOne.position){
 				gestureErr = true;
 				return;
 			}
