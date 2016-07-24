@@ -87,10 +87,10 @@ public class enemyScript : MonoBehaviour {
 		plr = (GameObject) Instantiate(bullet,transform.position, Quaternion.identity);
 		rb = plr.GetComponent<Rigidbody2D>();
 
-		bulletAngle = Random.Range (100.0f, 170.0f);
+		bulletAngle = Random.Range (120.0f, 160.0f);
 		Vector3 dir = Quaternion.AngleAxis (bulletAngle, Vector3.forward) * Vector3.right;
 		rb.AddForce (dir * bulletForce);
-		rb.AddTorque(bulletForce/bulletAngle * 2.0f);
+		rb.AddTorque(bulletForce/bulletAngle * 3.0f);
 
 		plr.transform.rotation = Quaternion.Euler (0, 0, 180+bulletAngle);
 		//matiin animasi nyerang
@@ -98,6 +98,7 @@ public class enemyScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Player Bullet") {
+			anim.SetTrigger ("hit");
 			health -= 5;
 			Destroy (coll.gameObject);
 		}

@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 480248}
   - 212: {fileID: 21248906}
   - 50: {fileID: 5018456}
-  - 60: {fileID: 6091068}
   - 114: {fileID: 11497290}
   - 95: {fileID: 9574908}
   - 82: {fileID: 8241020}
+  - 58: {fileID: 5808656}
   m_Layer: 10
   m_Name: Fireball
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.709688, y: -2.5931, z: 0}
+  m_LocalPosition: {x: -0.55857277, y: -0.1895476, z: 0}
   m_LocalScale: {x: 0.7428616, y: 0.742862, z: 0.7428616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -51,8 +51,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6091068
-PolygonCollider2D:
+--- !u!58 &5808656
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -63,45 +63,8 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 0.13, y: -0.35999998}
-      - {x: 0.17, y: -0.35}
-      - {x: 0.38, y: -0.32999998}
-      - {x: 0.59999996, y: -0.21}
-      - {x: 0.58, y: -0.17}
-      - {x: 0.53, y: -0.14999999}
-      - {x: 0.66999996, y: -0.03}
-      - {x: 0.88, y: -0.08}
-      - {x: 0.89, y: -0.049999997}
-      - {x: 0.89, y: -0.04}
-      - {x: 0.83, y: 0.11}
-      - {x: 0.65, y: 0.26999998}
-      - {x: 0.45999998, y: 0.26999998}
-      - {x: 0.41, y: 0.25}
-      - {x: 0.38, y: 0.22999999}
-      - {x: 0.39, y: 0.25}
-      - {x: 0.45999998, y: 0.28}
-      - {x: 0.48, y: 0.29999998}
-      - {x: 0.48, y: 0.31}
-      - {x: 0.45999998, y: 0.34}
-      - {x: 0.35999998, y: 0.37}
-      - {x: 0.32, y: 0.37}
-      - {x: 0.12, y: 0.35}
-      - {x: 0.04, y: 0.48999998}
-      - {x: -0.39999998, y: 0.56}
-      - {x: -0.68, y: 0.56}
-      - {x: -0.76, y: 0.55}
-      - {x: -0.90999997, y: 0.51}
-      - {x: -1.0699999, y: 0.26}
-      - {x: -1.0699999, y: -0.19999999}
-      - {x: -0.90999997, y: -0.39999998}
-      - {x: -0.78999996, y: -0.45999998}
-      - {x: -0.68, y: -0.48}
-      - {x: -0.45999998, y: -0.48}
-      - {x: -0.26999998, y: -0.44}
-      - {x: 0.04, y: -0.32999998}
-      - {x: 0.099999994, y: -0.35999998}
+  serializedVersion: 2
+  m_Radius: 1.1
 --- !u!82 &8241020
 AudioSource:
   m_ObjectHideFlags: 1
